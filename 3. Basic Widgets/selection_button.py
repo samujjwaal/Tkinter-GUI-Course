@@ -3,20 +3,33 @@ from tkinter import ttk
 
 root = tk.Tk()
 
-value = tk.StringVar()
-value.set("Daft")
+var = tk.StringVar()
+var.set("Daft")
 
 check = ttk.Checkbutton(root, text="Daft?")
 check.pack()
 
 
-def whats_value():
-    print(value.get())
+def whats_var():
+    print(var.get())
 
 
-check.config(variable=value, onvalue="Yes", offvalue="No", command=whats_value)
+check.config(variable=var, onvalue="Yes", offvalue="No", command=whats_var)
 
 
-# ttk.Radiobutton(root, text='github')
+ttk.Radiobutton(
+    root, text="github", variable=var, value="github", command=whats_var
+).pack()
+ttk.Radiobutton(
+    root, text="gitlab", variable=var, value="gitlab", command=whats_var
+).pack()
+ttk.Radiobutton(
+    root, text="bitbucket", variable=var, value="bitbucket", command=whats_var
+).pack()
+ttk.Radiobutton(
+    root, text="github", variable=var, value="github", command=whats_var
+).pack()
+
+check.config(textvariable=var)
 
 root.mainloop()
