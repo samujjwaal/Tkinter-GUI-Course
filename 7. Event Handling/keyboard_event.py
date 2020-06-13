@@ -12,6 +12,11 @@ def key_press(event):
     print(f"keycode: {event.keycode}")
 
 
-root.bind("<KeyPress>", key_press)
+def shortcut(action):
+    print(action)
+
+
+root.bind("<Control-c>", lambda e: shortcut("Copy Text"))
+root.bind("<Control-v>", lambda e: shortcut("Paste Text")),
 
 root.mainloop()
