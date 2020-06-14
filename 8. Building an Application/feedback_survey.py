@@ -69,16 +69,14 @@ class Feedback:
         self.buttons_frame.pack()
 
         # Submit button
-        self.submit_button = ttk.Button(
+        ttk.Button(
             self.buttons_frame, text="Submit", command=self.submit
-        )
-        self.submit_button.grid(row=0, column=0, padx=5, sticky="e")
+        ).grid(row=0, column=0, padx=5, sticky="e")
 
         # Clear button
-        self.clear_button = ttk.Button(
+        ttk.Button(
             self.buttons_frame, text="Clear", command=self.clear_fields
-        )
-        self.clear_button.grid(row=0, column=1, padx=5, sticky="w")
+        ).grid(row=0, column=1, padx=5, sticky="w")
 
     # Submit button callback function
     def submit(self):
@@ -106,6 +104,7 @@ class Feedback:
 def main():
 
     root = tk.Tk()
+    root.eval('tk::PlaceWindow . center')
     feedback = Feedback(root)
     root.mainloop()
 
