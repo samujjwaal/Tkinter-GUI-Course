@@ -5,6 +5,7 @@ from tkinter import ttk
 class Feedback:
     def __init__(self, master):
 
+        # frame for user info on top of window
         self.info_frame = ttk.Frame(master)
         self.info_frame.pack(fill=tk.BOTH, expand=True)
 
@@ -18,34 +19,42 @@ class Feedback:
         )
         self.info_label.pack()
 
+        # frame for all the input fields
         self.fields_frame = ttk.Frame(master)
         self.fields_frame.pack(fill=tk.BOTH, expand=True)
 
+        # Name field
         ttk.Label(self.fields_frame, text="Name").grid(
-            row=1, column=0, sticky="ew"
+            row=0, column=0, sticky="ew"
         )
         self.name_entry = ttk.Entry(self.fields_frame, width=30)
         self.name_entry.grid(row=0, column=1)
 
+        # Email field
         ttk.Label(self.fields_frame, text="Email").grid(
-            row=2, column=0, sticky="ew"
+            row=1, column=0, sticky="ew"
         )
         self.email_entry = ttk.Entry(self.fields_frame, width=30)
         self.email_entry.grid(row=1, column=1)
 
+        # Comments field
         ttk.Label(self.fields_frame, text="Comments").grid(
-            row=3, column=0, sticky="ew"
+            row=2, column=0, sticky="ew"
         )
         self.comments_text = tk.Text(
             self.fields_frame, width=35, height=4, wrap="word"
         )
         self.comments_text.grid(row=2, column=1)
 
+        # frame for the buttons at bottom of window
         self.buttons_frame = ttk.Frame(master)
         self.buttons_frame.pack(fill=tk.BOTH, expand=True)
 
+        # Submit button
         self.submit_button = ttk.Button(self.buttons_frame, text="Submit")
         self.submit_button.grid(row=0, column=0)
+
+        # Clear button
         self.clear_button = ttk.Button(self.buttons_frame, text="Clear")
         self.clear_button.grid(row=0, column=1)
 
