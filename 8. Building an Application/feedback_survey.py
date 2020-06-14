@@ -6,6 +6,17 @@ from tkinter import messagebox
 class Feedback:
     def __init__(self, master):
 
+        master.title("Explore California Feedback")
+        master.resizable(False, False)
+        master.configure(background="#e1d8b9")
+
+        # Style object to configure style of widgets
+        self.style = ttk.Style()
+
+        self.style.configure("TFrame", background="#e1d8b9")
+        self.style.configure("TButton", background="#e1d8b9")
+        self.style.configure("TLabel", background="#e1d8b9")
+
         # frame for user info on top of window
         self.info_frame = ttk.Frame(master)
         self.info_frame.pack(fill=tk.BOTH, expand=True)
@@ -16,7 +27,6 @@ class Feedback:
             text="Explore California Feedback Survey",
             image=self.pic,
             compound="left",
-            background="pink",
         ).pack()
 
         # frame for all the input fields
