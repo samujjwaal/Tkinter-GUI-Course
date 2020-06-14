@@ -11,14 +11,13 @@ class Feedback:
         self.info_frame.pack(fill=tk.BOTH, expand=True)
 
         self.pic = tk.PhotoImage(file="tour_logo.gif")
-        self.info_label = ttk.Label(
+        ttk.Label(
             self.info_frame,
             text="Explore California Feedback Survey",
             image=self.pic,
             compound="left",
             background="pink",
-        )
-        self.info_label.pack()
+        ).pack()
 
         # frame for all the input fields
         self.fields_frame = ttk.Frame(master)
@@ -66,9 +65,10 @@ class Feedback:
     # Submit button callback function
     def submit(self):
         # print input values to console
-        print(self.name_entry.get())
-        print(self.email_entry.get())
-        print(self.comments_text.get(1.0, "end"))
+        print(f"Name: {self.name_entry.get()}")
+        print(f"Email: {self.email_entry.get()}")
+        print(f"Comments: {self.comments_text.get(1.0, 'end')}")
+
         # clear all input field values
         self.clear_fields()
 
