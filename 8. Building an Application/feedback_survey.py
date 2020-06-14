@@ -42,21 +42,27 @@ class Feedback:
         self.fields_frame.pack()
 
         # Name field
-        ttk.Label(self.fields_frame, text="Name:").grid(row=0, column=0)
+        ttk.Label(self.fields_frame, text="Name:").grid(
+            row=0, column=0, padx=5, sticky="nw"
+        )
         self.name_entry = ttk.Entry(self.fields_frame, width=15)
-        self.name_entry.grid(row=1, column=0)
+        self.name_entry.grid(row=1, column=0, padx=5)
 
         # Email field
-        ttk.Label(self.fields_frame, text="Email:").grid(row=0, column=1)
+        ttk.Label(self.fields_frame, text="Email:").grid(
+            row=0, column=1, padx=5, sticky="nw"
+        )
         self.email_entry = ttk.Entry(self.fields_frame, width=15)
-        self.email_entry.grid(row=1, column=1)
+        self.email_entry.grid(row=1, column=1, padx=5)
 
         # Comments field
-        ttk.Label(self.fields_frame, text="Comments:").grid(row=2, column=0)
+        ttk.Label(self.fields_frame, text="Comments:").grid(
+            row=2, column=0, padx=5, sticky="nw"
+        )
         self.comments_text = tk.Text(
             self.fields_frame, width=35, height=4, wrap="word"
         )
-        self.comments_text.grid(row=3, column=0, columnspan=2)
+        self.comments_text.grid(row=3, column=0, columnspan=2, padx=5)
 
         # frame for the buttons at bottom of window
         self.buttons_frame = ttk.Frame(master)
@@ -66,13 +72,13 @@ class Feedback:
         self.submit_button = ttk.Button(
             self.buttons_frame, text="Submit", command=self.submit
         )
-        self.submit_button.grid(row=0, column=0)
+        self.submit_button.grid(row=0, column=0, padx=5, sticky="e")
 
         # Clear button
         self.clear_button = ttk.Button(
             self.buttons_frame, text="Clear", command=self.clear_fields
         )
-        self.clear_button.grid(row=0, column=1)
+        self.clear_button.grid(row=0, column=1, padx=5, sticky="w")
 
     # Submit button callback function
     def submit(self):
