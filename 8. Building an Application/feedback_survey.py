@@ -10,49 +10,56 @@ class Feedback:
         master.resizable(False, False)
         master.configure(background="#e1d8b9")
 
+
         # Style object to configure style of widgets
         self.style = ttk.Style()
-
         self.style.configure("TFrame", background="#e1d8b9")
         self.style.configure("TButton", background="#e1d8b9")
         self.style.configure(
-            "TLabel", background="#e1d8b9", font=["JetBrains Mono", 9]
+            "TLabel", background="#e1d8b9", font=["Cascadia Code", 10]
         )
-        self.style.configure("Info.TLabel", font=["JetBrains Mono", 15])
+        self.style.configure("Info.TLabel", font=["Cascadia Code", 14])
 
-        # frame for user info on top of window
+
+        # Frame for user info on top of window
         self.info_frame = ttk.Frame(master)
-        self.info_frame.pack()
+        self.info_frame.pack(pady=5)
 
         self.pic = tk.PhotoImage(file="tour_logo.gif")
         ttk.Label(self.info_frame, image=self.pic).grid(
             row=0, column=0, rowspan=2
         )
-        ttk.Label(self.info_frame, text="Thank You", style="Info.TLabel").grid(
-            row=0, column=1
-        )
+        ttk.Label(
+            self.info_frame, text="Explore California", style="Info.TLabel"
+        ).grid(row=0, column=1)
         ttk.Label(
             self.info_frame,
-            text="Explore California Feedback Survey",
-            wraplength=200,
+            text="Thank You for taking your time to fill up this Feedback Survey form and support us in our mission",
+            wraplength=300,
+            justify=tk.CENTER,
         ).grid(row=1, column=1)
 
-        # frame for all the input fields
+
+        # Frame for all the input fields
         self.fields_frame = ttk.Frame(master)
-        self.fields_frame.pack()
+        self.fields_frame.pack(pady=5)
 
         # Name field
         ttk.Label(self.fields_frame, text="Name:").grid(
             row=0, column=0, padx=5, sticky="nw"
         )
-        self.name_entry = ttk.Entry(self.fields_frame, width=15)
+        self.name_entry = ttk.Entry(
+            self.fields_frame, width=20, font=["JetBrains Mono", 10]
+        )
         self.name_entry.grid(row=1, column=0, padx=5)
 
         # Email field
         ttk.Label(self.fields_frame, text="Email:").grid(
             row=0, column=1, padx=5, sticky="nw"
         )
-        self.email_entry = ttk.Entry(self.fields_frame, width=15)
+        self.email_entry = ttk.Entry(
+            self.fields_frame, width=20, font=["JetBrains Mono", 10]
+        )
         self.email_entry.grid(row=1, column=1, padx=5)
 
         # Comments field
@@ -60,7 +67,11 @@ class Feedback:
             row=2, column=0, padx=5, sticky="nw"
         )
         self.comments_text = tk.Text(
-            self.fields_frame, width=35, height=6, wrap="word"
+            self.fields_frame,
+            width=40,
+            height=6,
+            wrap="word",
+            font=["JetBrains Mono", 10],
         )
         self.comments_text.grid(row=3, column=0, columnspan=2, padx=5)
 
@@ -72,9 +83,10 @@ class Feedback:
         scroll_bar.grid(row=3, column=2, sticky="ns")
         self.comments_text.config(yscrollcommand=scroll_bar.set)
 
-        # frame for the buttons at bottom of window
+
+        # Frame for the buttons at bottom of window
         self.buttons_frame = ttk.Frame(master)
-        self.buttons_frame.pack()
+        self.buttons_frame.pack(pady=5)
 
         # Submit button
         ttk.Button(
@@ -85,6 +97,7 @@ class Feedback:
         ttk.Button(
             self.buttons_frame, text="Clear", command=self.clear_fields
         ).grid(row=0, column=1, padx=5, pady=5, sticky="w")
+
 
     # Submit button callback function
     def submit(self):
@@ -112,6 +125,7 @@ class Feedback:
 def main():
 
     root = tk.Tk()
+    # to center the window on the screen
     root.eval("tk::PlaceWindow . center")
     Feedback(root)
     root.mainloop()
