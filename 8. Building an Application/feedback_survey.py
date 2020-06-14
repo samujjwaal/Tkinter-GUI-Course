@@ -15,50 +15,52 @@ class Feedback:
 
         self.style.configure("TFrame", background="#e1d8b9")
         self.style.configure("TButton", background="#e1d8b9")
-        self.style.configure("TLabel", background="#e1d8b9")
+        self.style.configure(
+            "TLabel", background="#e1d8b9", font=["JetBrains Mono", 9]
+        )
+        self.style.configure("Info.TLabel", font=["JetBrains Mono", 15])
 
         # frame for user info on top of window
         self.info_frame = ttk.Frame(master)
-        self.info_frame.pack(fill=tk.BOTH, expand=True)
+        self.info_frame.pack()
 
         self.pic = tk.PhotoImage(file="tour_logo.gif")
+        ttk.Label(self.info_frame, image=self.pic).grid(
+            row=0, column=0, rowspan=2
+        )
+        ttk.Label(self.info_frame, text="Thank You", style="Info.TLabel").grid(
+            row=0, column=1
+        )
         ttk.Label(
             self.info_frame,
             text="Explore California Feedback Survey",
-            image=self.pic,
-            compound="left",
-        ).pack()
+            wraplength=200,
+        ).grid(row=1, column=1)
 
         # frame for all the input fields
         self.fields_frame = ttk.Frame(master)
-        self.fields_frame.pack(fill=tk.BOTH, expand=True)
+        self.fields_frame.pack()
 
         # Name field
-        ttk.Label(self.fields_frame, text="Name").grid(
-            row=0, column=0, sticky="ew"
-        )
-        self.name_entry = ttk.Entry(self.fields_frame, width=30)
-        self.name_entry.grid(row=0, column=1, sticky="ew")
+        ttk.Label(self.fields_frame, text="Name:").grid(row=0, column=0)
+        self.name_entry = ttk.Entry(self.fields_frame, width=15)
+        self.name_entry.grid(row=1, column=0)
 
         # Email field
-        ttk.Label(self.fields_frame, text="Email").grid(
-            row=1, column=0, sticky="ew"
-        )
-        self.email_entry = ttk.Entry(self.fields_frame, width=30)
-        self.email_entry.grid(row=1, column=1, sticky="ew")
+        ttk.Label(self.fields_frame, text="Email:").grid(row=0, column=1)
+        self.email_entry = ttk.Entry(self.fields_frame, width=15)
+        self.email_entry.grid(row=1, column=1)
 
         # Comments field
-        ttk.Label(self.fields_frame, text="Comments").grid(
-            row=2, column=0, sticky="ew"
-        )
+        ttk.Label(self.fields_frame, text="Comments:").grid(row=2, column=0)
         self.comments_text = tk.Text(
             self.fields_frame, width=35, height=4, wrap="word"
         )
-        self.comments_text.grid(row=2, column=1)
+        self.comments_text.grid(row=3, column=0, columnspan=2)
 
         # frame for the buttons at bottom of window
         self.buttons_frame = ttk.Frame(master)
-        self.buttons_frame.pack(fill=tk.BOTH, expand=True)
+        self.buttons_frame.pack()
 
         # Submit button
         self.submit_button = ttk.Button(
