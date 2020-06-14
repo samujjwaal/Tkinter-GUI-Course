@@ -60,9 +60,17 @@ class Feedback:
             row=2, column=0, padx=5, sticky="nw"
         )
         self.comments_text = tk.Text(
-            self.fields_frame, width=35, height=4, wrap="word"
+            self.fields_frame, width=35, height=6, wrap="word"
         )
         self.comments_text.grid(row=3, column=0, columnspan=2, padx=5)
+
+        scroll_bar = ttk.Scrollbar(
+            self.fields_frame,
+            orient=tk.VERTICAL,
+            command=self.comments_text.yview,
+        )
+        scroll_bar.grid(row=3, column=2, sticky="ns")
+        self.comments_text.config(yscrollcommand=scroll_bar.set)
 
         # frame for the buttons at bottom of window
         self.buttons_frame = ttk.Frame(master)
@@ -71,12 +79,12 @@ class Feedback:
         # Submit button
         ttk.Button(
             self.buttons_frame, text="Submit", command=self.submit
-        ).grid(row=0, column=0, padx=5, sticky="e")
+        ).grid(row=0, column=0, padx=5, pady=5, sticky="e")
 
         # Clear button
         ttk.Button(
             self.buttons_frame, text="Clear", command=self.clear_fields
-        ).grid(row=0, column=1, padx=5, sticky="w")
+        ).grid(row=0, column=1, padx=5, pady=5, sticky="w")
 
     # Submit button callback function
     def submit(self):
@@ -104,8 +112,8 @@ class Feedback:
 def main():
 
     root = tk.Tk()
-    root.eval('tk::PlaceWindow . center')
-    feedback = Feedback(root)
+    root.eval("tk::PlaceWindow . center")
+    Feedback(root)
     root.mainloop()
 
 
