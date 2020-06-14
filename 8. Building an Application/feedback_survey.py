@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
+from tkinter import messagebox
 
 
 class Feedback:
@@ -51,7 +52,9 @@ class Feedback:
         self.buttons_frame.pack(fill=tk.BOTH, expand=True)
 
         # Submit button
-        self.submit_button = ttk.Button(self.buttons_frame, text="Submit")
+        self.submit_button = ttk.Button(
+            self.buttons_frame, text="Submit", command=self.submit
+        )
         self.submit_button.grid(row=0, column=0)
 
         # Clear button
@@ -59,6 +62,21 @@ class Feedback:
             self.buttons_frame, text="Clear", command=self.clear_fields
         )
         self.clear_button.grid(row=0, column=1)
+
+    # Submit button callback function
+    def submit(self):
+        # print input values to console
+        print(self.name_entry.get())
+        print(self.email_entry.get())
+        print(self.comments_text.get(1.0, "end"))
+        # clear all input field values
+        self.clear_fields()
+
+        # message box to notify user
+        messagebox.showinfo(
+            title="Feedback Confirmation",
+            message="Thank You for your valuable feedback !",
+        )
 
     # Clear button callback function
     def clear_fields(self):
