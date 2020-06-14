@@ -28,14 +28,14 @@ class Feedback:
             row=0, column=0, sticky="ew"
         )
         self.name_entry = ttk.Entry(self.fields_frame, width=30)
-        self.name_entry.grid(row=0, column=1)
+        self.name_entry.grid(row=0, column=1, sticky="ew")
 
         # Email field
         ttk.Label(self.fields_frame, text="Email").grid(
             row=1, column=0, sticky="ew"
         )
         self.email_entry = ttk.Entry(self.fields_frame, width=30)
-        self.email_entry.grid(row=1, column=1)
+        self.email_entry.grid(row=1, column=1, sticky="ew")
 
         # Comments field
         ttk.Label(self.fields_frame, text="Comments").grid(
@@ -55,8 +55,16 @@ class Feedback:
         self.submit_button.grid(row=0, column=0)
 
         # Clear button
-        self.clear_button = ttk.Button(self.buttons_frame, text="Clear")
+        self.clear_button = ttk.Button(
+            self.buttons_frame, text="Clear", command=self.clear_fields
+        )
         self.clear_button.grid(row=0, column=1)
+
+    # Clear button callback function
+    def clear_fields(self):
+        self.name_entry.delete(0, "end")
+        self.email_entry.delete(0, "end")
+        self.comments_text.delete(1.0, "end")
 
 
 def main():
