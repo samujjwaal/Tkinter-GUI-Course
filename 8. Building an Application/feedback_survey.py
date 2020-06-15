@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
+from tkinter import scrolledtext
 from tkinter import messagebox
 
 
@@ -49,16 +50,17 @@ class Feedback:
             row=0, column=0, padx=5, sticky="nw"
         )
         self.name_entry = ttk.Entry(
-            self.fields_frame, width=20, font=["JetBrains Mono", 10]
+            self.fields_frame, width=17, font=["JetBrains Mono", 10]
         )
         self.name_entry.grid(row=1, column=0, padx=5)
+        self.name_entry.focus()
 
         # Email field
         ttk.Label(self.fields_frame, text="Email:").grid(
             row=0, column=1, padx=5, sticky="nw"
         )
         self.email_entry = ttk.Entry(
-            self.fields_frame, width=20, font=["JetBrains Mono", 10]
+            self.fields_frame, width=17, font=["JetBrains Mono", 10]
         )
         self.email_entry.grid(row=1, column=1, padx=5)
 
@@ -66,7 +68,7 @@ class Feedback:
         ttk.Label(self.fields_frame, text="Comments:").grid(
             row=2, column=0, padx=5, sticky="nw"
         )
-        self.comments_text = tk.Text(
+        self.comments_text = scrolledtext.ScrolledText(
             self.fields_frame,
             width=40,
             height=6,
@@ -74,14 +76,6 @@ class Feedback:
             font=["JetBrains Mono", 10],
         )
         self.comments_text.grid(row=3, column=0, columnspan=2, padx=5)
-
-        scroll_bar = ttk.Scrollbar(
-            self.fields_frame,
-            orient=tk.VERTICAL,
-            command=self.comments_text.yview,
-        )
-        scroll_bar.grid(row=3, column=2, sticky="ns")
-        self.comments_text.config(yscrollcommand=scroll_bar.set)
 
 
         # Frame for the buttons at bottom of window
