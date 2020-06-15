@@ -26,7 +26,7 @@ class Feedback:
         self.info_frame = ttk.Frame(master)
         self.info_frame.pack(pady=5)
 
-        self.pic = tk.PhotoImage(file="tour_logo.gif")
+        self.pic = tk.PhotoImage(file="..\\etc\\tour_logo.gif")
         ttk.Label(self.info_frame, image=self.pic).grid(
             row=0, column=0, rowspan=2
         )

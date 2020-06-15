@@ -17,7 +17,7 @@ label.config(foreground="blue", background="yellow")
 label.config(font=("Fira Code", 12, "italic"))
 
 # import image -- only gif images supported
-pic = tk.PhotoImage(file="samujjwaal.gif")
+pic = tk.PhotoImage(file="..\\etc\\samujjwaal.gif")
 
 # compound attribute to put image to left of label text
 label.config(image=pic, compound="left")
